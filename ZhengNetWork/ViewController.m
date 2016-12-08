@@ -7,8 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "ZhengNetworkHeader.h"
 
+#import "ZhengNetworkHeader.h"
 
 
 #import "MJExtension.h"
@@ -22,143 +22,205 @@
 
 @implementation ViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-#warning  使用时注意 请求参数中的字段是否对应  ParameterFieldConst.m
-    [self requestJsonDicData];
+    self.view.backgroundColor = [UIColor whiteColor];
     
-//    [self requestJsonArrayData];
+    //    [self requestJsonDicDataNoCache];
+    //    [self requestListPageDataNoCache];
     
-//    [self requestPageDataSQLite];
+//    [self requestJsonDicDataCache];
+//            [self requestListPageDataCache];
     
-//    [self requestPageDataCoding];
+//    [self downloadFile];
+    
+//    [self uploadFile];
 }
 
-#warning 请求数据（带有缓存）  不是分页数据  单纯Json字典或者数组   只能用Coding
-- (void)requestJsonDicData{
+- (void)requestJsonDicDataNoCache{
+    ZhengRequest *zhengRequest = [[ZhengRequest alloc] init];
+    zhengRequest.urlStr = @"https://itunes.apple.com/lookup";
+    zhengRequest.parameters = @{@"id":@"444934666"};
+    zhengRequest.cacheMethod = CacheMethod_Coding;
     
-    NSString *url = @"https://itunes.apple.com/lookup";
-    NSDictionary *dic = @{@"id":@"444934666"};
-    
-    //读取缓存    请求的数据是个字典  读取缓存获得的是个对应的模型
-    //  如果请求的数据是个数组  数组里面是字典  返回的数据是个数组模型
-    id readJson = [ZhengCacheTool readJsonClass:[JsonDicModel class] parameters:dic cacheMethod:CacheMethodCoding];
-    NSLog(@"--------------cache----------------------");
-    NSLog(@"%@",readJson);
-//    JsonDicModel *jsonDicModel = (JsonDicModel *)readJson;
-//    NSLog(@"--------------cache----------------------");
-//    NSLog(@"%@",jsonDicModel.mj_keyValues);
-    
-    //请求数据
-    [ZhengHttpCacheTool postRequestJsonUrlStr:url parameters:dic class:[JsonDicModel class] cacheMethod:CacheMethodCoding success:^(id responseModel) {
-        JsonDicModel *jsonDicModel = (JsonDicModel *)responseModel;
-        NSLog(@"--------------success----------------------");
-        NSLog(@"%@",jsonDicModel.mj_keyValues);
-        
+    [ZhengNetWork sendRequest:zhengRequest success:^(id responseObject ,NSMutableArray *modelArray) {
+        NSLog(@"%@",responseObject);
+        NSLog(@"%ld",zhengRequest.requestStatus);
     } failure:^(NSError *error) {
-        NSLog(@"--------------failure----------------------");
+        
+    }];
+    //不可连用  一个请求一个状态
+    //    [ZhengNetWork sendRequest:zhengRequest success:^(id responseObject) {
+    //        NSLog(@"%@",responseObject);
+    //        NSLog(@"%ld",zhengRequest.requestStatus);
+    //    } failure:^(NSError *error) {
+    //
+    //    }];
+    
+    //    [zhengRequest stopRequest];
+    //    NSLog(@"%ld",zhengRequest.requestStatus);
+}
+
+- (void)requestListPageDataNoCache{
+    ZhengPageRequest *zhengPageRequest = [[ZhengPageRequest alloc] init];
+    zhengPageRequest.urlStr = @"http://api.goldtoutiao.com/v2/livenews";
+    zhengPageRequest.page = 1;
+    zhengPageRequest.limit = @(2);
+    
+    [ZhengNetWork sendRequest:zhengPageRequest success:^(id responseObject ,NSMutableArray *modelArray) {
+        NSLog(@"%@",responseObject);
+        NSLog(@"%ld",zhengPageRequest.requestStatus);
+    } failure:^(NSError *error) {
+        
+    }];
+    //    [zhengRequest stopRequest];
+    //    NSLog(@"%ld",zhengRequest.requestStatus);
+    //    NSLog(@"--------------------");
+}
+
+- (void)requestJsonDicDataCache{
+    
+    
+    ZhengRequest *zhengRequest = [[ZhengRequest alloc] init];
+    zhengRequest.urlStr = @"https://itunes.apple.com/lookup";
+    zhengRequest.parameters = @{@"id":@"444934666"};
+    zhengRequest.cacheMethod = CacheMethod_Coding;
+    zhengRequest.className = [JsonDicModel class];
+//    zhengRequest.expiredTime = 58 * 60 * 60;
+    //    [ZhengNetWork sendRequest:zhengRequest success:^(id responseObject ,id modelObject) {
+    //        NSLog(@"%@",responseObject);
+    //        NSLog(@"%ld",zhengRequest.requestStatus);
+    //    } failure:^(NSError *error) {
+    //
+    //    }];
+    
+    [ZhengNetWork readCacheRequest:zhengRequest cache:^(id responseObject, id modelObject) {
+        NSLog(@"%@",responseObject);
+        NSLog(@"%@",modelObject);
+        NSLog(@"%ld",zhengRequest.requestStatus);
     }];
 }
 
-- (void)requestJsonArrayData{
+- (void)requestListPageDataCache{
+    ZhengPageRequest *zhengPageRequest = [[ZhengPageRequest alloc] init];
+    zhengPageRequest.urlStr = @"http://api.goldtoutiao.com/v2/livenews";
+    zhengPageRequest.page = 1;
+    zhengPageRequest.limit = @(2);
     
-    NSString *url = @"https://itunes.apple.com/lookup";
-    NSDictionary *dic = @{@"id":@"444934666"};
+    zhengPageRequest.cacheMethod = CacheMethod_SQLite;
     
-    //读取缓存    请求的数据是个字典  读取缓存获得的是个对应的模型
-    //  如果请求的数据是个数组  数组里面是字典  返回的数据是个数组模型
-    id readJson = [ZhengCacheTool readJsonClass:[JsonArrayModel class] parameters:dic cacheMethod:CacheMethodCoding];
-    NSLog(@"--------------cache----------------------");
-    NSLog(@"%@",readJson);
+    zhengPageRequest.needJsonField = @"results";
+    zhengPageRequest.className = [PageModel class];
     
-//    NSArray *arrayModel = (NSArray *)readJson;
-//    NSLog(@"--------------cache----------------------");
-//    for (JsonArrayModel *tempModel in arrayModel) {
-//        NSLog(@"%@",tempModel.mj_keyValues);
-//    }
+//        [ZhengNetWork sendRequest:zhengPageRequest success:^(id responseObject ,id modelObject) {
+//            NSLog(@"%@",responseObject);
+//            NSLog(@"%@",modelObject);
+//            NSLog(@"%ld",zhengPageRequest.requestStatus);
+//        } failure:^(NSError *error) {
+//    
+//        }];
     
-    //请求数据
-    [ZhengHttpCacheTool postRequestJsonUrlStr:url parameters:dic class:[JsonArrayModel class] cacheMethod:CacheMethodCoding success:^(id responseModel) {
-        NSArray *arrayModel = (NSArray *)responseModel;
-        NSLog(@"--------------success----------------------");
-        for (JsonArrayModel *tempModel in arrayModel) {
-            NSLog(@"%@",tempModel.mj_keyValues);
+    [ZhengNetWork readCacheRequest:zhengPageRequest cache:^(id responseObject, id modelObject) {
+        NSLog(@"%@",responseObject);
+        NSLog(@"%@",modelObject);
+        NSLog(@"%ld",zhengPageRequest.requestStatus);
+    }];
+    
+    //    [zhengRequest stopRequest];
+    //    NSLog(@"%ld",zhengRequest.requestStatus);
+    //    NSLog(@"--------------------");
+}
+
+- (void)downloadFile{
+    
+    NSURL *targetDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSLibraryDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+    
+    ZhengDownloadRequest *zhengDownloadRequest = [[ZhengDownloadRequest alloc] init];
+    zhengDownloadRequest.urlStr = @"https://download.alicdn.com/dingtalk-desktop/Release/install/DingTalk_v3.2.0.dmg";
+    zhengDownloadRequest.targetDirectoryURL = targetDirectoryURL;
+    
+    [ZhengNetWork downLoadFileRequst:zhengDownloadRequest progress:^(NSProgress *downloadProgress) {
+        
+//        NSLog(@"-------%@-----",downloadProgress);
+        NSLog(@"----%lld----%lld-",downloadProgress.completedUnitCount,downloadProgress.totalUnitCount);
+        NSLog(@"-------%f-----",downloadProgress.fractionCompleted);
+//        NSLog(@"%@",zhengDownloadRequest.downloadTask.response.suggestedFilename);//DingTalk_v3.2.0.dmg
+//        NSLog(@"%lld",zhengDownloadRequest.downloadTask.response.expectedContentLength);//68656690
+//        NSLog(@"--------------------");
+        
+    } destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+        
+//        NSLog(@"--------------------");
+//        NSLog(@"%lld",response.expectedContentLength);//68656690
+//        NSLog(@"%@",response.suggestedFilename);//DingTalk_v3.2.0.dmg
+//        NSLog(@"%@",response.textEncodingName);//(null)
+//        NSLog(@"%@",response.MIMEType);//application/octet-stream
+//        NSLog(@"%@",targetPath);//临时缓存目录
+//        NSLog(@"--------------------");
+        
+        
+        //此处检查是否有相同文件（如果知道文件名  在下载前进行检查）
+        
+        return [zhengDownloadRequest.targetDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+        
+    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+        
+        NSLog(@"--   %@   --", filePath);
+    }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSLog(@"-----------suspend---------");
+        [zhengDownloadRequest suspend];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [zhengDownloadRequest resume];
+            NSLog(@"-----------resume---------");
+        });
+    });
+}
+
+- (void)uploadFile{
+    ZhengUploadRequest *zhengUploadRequest = [[ZhengUploadRequest alloc] init];
+    zhengUploadRequest.urlStr = @"http://example.com/upload";
+    zhengUploadRequest.upLoadFilePath = @"file://path/to/image.png";
+    
+    [ZhengNetWork upLoadFileRequst:zhengUploadRequest progress:^(NSProgress *uploadProgress) {
+        NSLog(@"----%lld----%lld-",uploadProgress.completedUnitCount,uploadProgress.totalUnitCount);
+        NSLog(@"-------%f-----",uploadProgress.fractionCompleted);
+        
+    } completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+        } else {
+            NSLog(@"Success: %@ %@", response, responseObject);
         }
-        
-    } failure:^(NSError *error) {
-        NSLog(@"--------------failure----------------------");
     }];
 }
 
-#warning 缓存读取方法 列表数据（数据类型数组） 最好用SQLite也可用Coding
-- (void)requestPageDataSQLite{
+- (void)uploadMultiRequst{
+    ZhengMultiUploadRequest *zhengMultiUploadRequest = [[ZhengMultiUploadRequest alloc] init];
+    zhengMultiUploadRequest.urlStr = @"http://example.com/upload";
+    zhengMultiUploadRequest.upLoadFilePath = @"file://path/to/image.jpg";
+    zhengMultiUploadRequest.fileName = @"filename.jpg";
+    zhengMultiUploadRequest.parameters = @{};
+    zhengMultiUploadRequest.mimeType = @"image/jpeg";
     
-//    http://api.goldtoutiao.com:80/v2/mobile-articles?limit=5&device=ios&channel=global-carousel&page=1
-    
-    NSString *url = @"http://api.goldtoutiao.com/v2/mobile-articles";
-    NSDictionary *dic = @{@"limit":@"1",@"device":@"ios",@"channel":@"global-carouse",@"page":@"1"};
-    
-    //读取缓存
-    NSArray *cacheArray = [ZhengCacheTool readArrayFromClass:[PageModel class] parameters:dic cacheMethod:CacheMethodSQLite];
-    NSLog(@"--------------cache----------------------");
-    NSLog(@"%@",cacheArray);
-//    for (id model in cacheArrayModel) {
-//        PageModel *myModel = (PageModel *)model;
-//        NSLog(@"%@",myModel.mj_keyValues);
-//    }
-    
-    //请求数据
-    [ZhengHttpCacheTool getRequestListUrlStr:url parameters:dic cacheArrayField:@"results" class:[PageModel class] cacheMethod:CacheMethodSQLite success:^(id responseModelArray) {
-        NSLog(@"--------------success----------------------");
-        for (id model in responseModelArray) {
-            PageModel *myModel = (PageModel *)model;
-            NSLog(@"%@",myModel.mj_keyValues);
+    [ZhengNetWork upLoadMultiRequst:zhengMultiUploadRequest multiprogress:^(NSProgress *uploadProgress) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //主线程操作
+        });
+    } completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+        } else {
+            NSLog(@"%@ %@", response, responseObject);
         }
-        
-        
-    } failure:^(NSError *error) {
-        NSLog(@"--------------failure----------------------");
     }];
-    
-}
-
-- (void)requestPageDataCoding{
-    
-    //    http://api.goldtoutiao.com:80/v2/mobile-articles?limit=5&device=ios&channel=global-carousel&page=1
-    
-    NSString *url = @"http://api.goldtoutiao.com/v2/mobile-articles";
-    NSDictionary *dic = @{@"limit":@"4",@"device":@"ios",@"channel":@"global-carouse",@"page":@"1"};
-    
-    //读取缓存
-    NSArray *cacheArray = [ZhengCacheTool readArrayFromClass:[PageModel class] parameters:dic cacheMethod:CacheMethodCoding];
-    NSLog(@"--------------cache----------------------");
-    NSLog(@"%@",cacheArray);
-//    for (id model in cacheArrayModel) {
-//        PageModel *myModel = (PageModel *)model;
-//        NSLog(@"%@",myModel.mj_keyValues);
-//    }
-    
-    //请求数据
-    
-    [ZhengHttpCacheTool getRequestListUrlStr:url parameters:dic cacheArrayField:@"results" class:[PageModel class] cacheMethod:CacheMethodCoding success:^(id responseModelArray) {
-        NSLog(@"--------------success----------------------");
-        for (id model in responseModelArray) {
-            PageModel *myModel = (PageModel *)model;
-            NSLog(@"%@",myModel.mj_keyValues);
-        }
-        
-        
-    } failure:^(NSError *error) {
-        NSLog(@"--------------failure----------------------");
-    }];
-    
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end

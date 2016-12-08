@@ -1,21 +1,20 @@
 //
 //  ZhengCacheSQLite.m
-//  AFN封装使用
+//  ZhengNetWork
 //
-//  Created by 李保征 on 16/7/21.
+//  Created by 李保征 on 2016/12/7.
 //  Copyright © 2016年 李保征. All rights reserved.
 //
 
 #import "ZhengCacheSQLite.h"
+#import "ZhengParameterFieldConst.h"
 #import "ZhengCacheDirectory.h"
 #import "FMDB.h"
-#import "ZhengParameterFieldConst.h"
 
 //数据库字段（不要改）
 #define SQTableName @"t_myTable"
 #define SQDicID @"dict_ID"
 #define SQDicFiledName @"my_respose_dict"
-
 
 @interface ZhengCacheSQLite ()
 
@@ -25,13 +24,21 @@
 
 @implementation ZhengCacheSQLite
 
-#pragma mark - 缓存读取数据   列表分页数据  （数据类型数组）
-//缓存数据库
-- (BOOL)cacheArray:(NSArray *)cacheArray class:(Class)ClassName parameters:(NSDictionary *)parameters{
+- (BOOL)cachePageJson:(NSArray *)cacheArray zhengPageRequest:(ZhengPageRequest *)zhengPageRequest{
     
-    //缓存完整路径  数据库文件用不到page字段
-    //  (Library/Caches/LiBaoZhengCache/LiBaoZhengCacheSQLite/ClassName/ClassName_CacheData.sqlite)
-    NSString *cachefullPath = [ZhengCacheDirectory cacheFullPathWithDirectory:NSStringFromClass(ClassName) cacheMethod:CacheMethodSQLite];
+    NSString *urlStr = zhengPageRequest.urlStr;
+    CacheMethod cacheMethod = zhengPageRequest.cacheMethod;
+    
+    //缓存完整路径
+    NSString *cachefullPath = [ZhengCacheDirectory cacheFullPathWithDirectory:urlStr cacheMethod:cacheMethod];
+    
+    //检查文件是否超出限制大小
+    if ([ZhengCacheDirectory fileIsExistsAtPath:cachefullPath]) {
+        long long fileSize = [ZhengCacheDirectory readFileSize:cachefullPath];
+        if (fileSize > SqliteFileLimtSize) {
+            [ZhengCacheDirectory deleteFileAtPath:cachefullPath];
+        }
+    }
     
     self.myDataBase = [FMDatabase databaseWithPath:cachefullPath];
     
@@ -70,24 +77,26 @@
     }
 }
 
-//读取数据库
-- (NSArray *)readArrayClass:(Class)ClassName parameters:(NSDictionary *)parameters{
+- (NSArray *)readPageJson:(ZhengPageRequest *)zhengPageRequest{
     
-    //缓存完整路径  数据库文件用不到page字段
-    //  (Library/Caches/LiBaoZhengCache/LiBaoZhengCacheSQLite/ClassName/ClassName_CacheData.sqlite)
-    NSString *cachefullPath = [ZhengCacheDirectory cacheFullPathWithDirectory:NSStringFromClass(ClassName) cacheMethod:CacheMethodSQLite];
+    NSString *urlStr = zhengPageRequest.urlStr;
+    CacheMethod cacheMethod = zhengPageRequest.cacheMethod;
+    
+    //缓存完整路径
+    NSString *cachefullPath = [ZhengCacheDirectory cacheFullPathWithDirectory:urlStr cacheMethod:cacheMethod];
     
     //不存在文件直接返回空
     if (![ZhengCacheDirectory fileIsExistsAtPath:cachefullPath]){
         return nil;
     }
+    //缓存过期
+    if ([ZhengCacheDirectory fileIsExpiredAtPath:cachefullPath expiredTime:zhengPageRequest.expiredTime]) {
+        return nil;
+    }
     
-    //设置页码 默认为1
-    NSString *pageStr = [NSString stringWithFormat:@"%@",parameters[ParameterPageFiled]];
-    NSInteger page = ((pageStr == nil || pageStr.integerValue <= 1) ? 1 : pageStr.integerValue);
-    //限制条数  默认为10
-    NSString *limitStr = [NSString stringWithFormat:@"%@",parameters[ParameterLimitFiled]];
-    NSInteger limit = ((limitStr == nil) ? 10 : limitStr.integerValue);
+    //设置页码 限制条数
+    NSInteger page = zhengPageRequest.page;
+    NSInteger limit = zhengPageRequest.limit.integerValue;
     
     self.myDataBase = [FMDatabase databaseWithPath:cachefullPath];
     
@@ -116,22 +125,15 @@
 
 // 单例
 static id _instance;
-+ (id)allocWithZone:(struct _NSZone *)zone{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _instance = [super allocWithZone:zone];
-    });
-    return _instance;
-}
 + (instancetype)shareCacheSQLite{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    if (_instance == nil) {
         _instance = [[self alloc] init];
-    });
+    }
     return _instance;
 }
-+ (id)copyWithZone:(struct _NSZone *)zone{
-    return _instance;
+
+- (void)dealloc{
+    
 }
 
 @end

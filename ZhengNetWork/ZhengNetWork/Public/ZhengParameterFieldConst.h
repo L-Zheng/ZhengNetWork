@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+#define DefaultPage 1
+#define DefaultLimit 30
+
+//限制数据库文件大小 50M
+#define SqliteFileLimtSize (50 * 1024 * 1024)
+
 //请求参数中的page字段
 extern NSString * const ParameterPageFiled;
 //请求参数中的limit字段

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F284FCD1DF90111006AB3EA /* ZhengUploadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F284FCC1DF90111006AB3EA /* ZhengUploadRequest.m */; };
+		0F284FD01DF90866006AB3EA /* ZhengMultiUploadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F284FCF1DF90866006AB3EA /* ZhengMultiUploadRequest.m */; };
 		0F4A32121DE8227500B0A245 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A32111DE8227500B0A245 /* main.m */; };
 		0F4A32151DE8227500B0A245 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A32141DE8227500B0A245 /* AppDelegate.m */; };
 		0F4A32181DE8227500B0A245 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A32171DE8227500B0A245 /* ViewController.m */; };
@@ -42,14 +44,18 @@
 		0F4A32941DE823AD00B0A245 /* JsonDicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A32931DE823AD00B0A245 /* JsonDicModel.m */; };
 		0F4A32971DE823B200B0A245 /* JsonArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A32961DE823B200B0A245 /* JsonArrayModel.m */; };
 		0F4A329A1DE823B800B0A245 /* PageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A32991DE823B800B0A245 /* PageModel.m */; };
-		0F4A32AD1DE823C000B0A245 /* ZhengCacheCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A329D1DE823C000B0A245 /* ZhengCacheCoding.m */; };
-		0F4A32AE1DE823C000B0A245 /* ZhengCacheDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A329F1DE823C000B0A245 /* ZhengCacheDirectory.m */; };
-		0F4A32AF1DE823C000B0A245 /* ZhengCacheSQLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A32A11DE823C000B0A245 /* ZhengCacheSQLite.m */; };
-		0F4A32B01DE823C000B0A245 /* ZhengCacheTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A32A31DE823C000B0A245 /* ZhengCacheTool.m */; };
-		0F4A32B11DE823C000B0A245 /* ZhengConvertModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A32A51DE823C000B0A245 /* ZhengConvertModelTool.m */; };
-		0F4A32B21DE823C000B0A245 /* ZhengHttpCacheTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A32A71DE823C000B0A245 /* ZhengHttpCacheTool.m */; };
-		0F4A32B31DE823C000B0A245 /* ZhengHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A32A91DE823C000B0A245 /* ZhengHttpTool.m */; };
-		0F4A32B41DE823C000B0A245 /* ZhengParameterFieldConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A32AC1DE823C000B0A245 /* ZhengParameterFieldConst.m */; };
+		0FDB67B71DF7D7DC00A444A4 /* ZhengNetWork+Error.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB67A61DF7D7DC00A444A4 /* ZhengNetWork+Error.m */; };
+		0FDB67B81DF7D7DC00A444A4 /* ZhengNetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB67A81DF7D7DC00A444A4 /* ZhengNetWork.m */; };
+		0FDB67B91DF7D7DC00A444A4 /* ZhengPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB67AB1DF7D7DC00A444A4 /* ZhengPageRequest.m */; };
+		0FDB67BC1DF7D7DC00A444A4 /* ZhengRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB67B11DF7D7DC00A444A4 /* ZhengRequest.m */; };
+		0FDB67C21DF801CB00A444A4 /* ZhengParseTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB67C11DF801CB00A444A4 /* ZhengParseTool.m */; };
+		0FDB67CC1DF801F700A444A4 /* ZhengCacheCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB67C51DF801F700A444A4 /* ZhengCacheCoding.m */; };
+		0FDB67CD1DF801F700A444A4 /* ZhengCacheDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB67C71DF801F700A444A4 /* ZhengCacheDirectory.m */; };
+		0FDB67CE1DF801F700A444A4 /* ZhengCacheSQLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB67C91DF801F700A444A4 /* ZhengCacheSQLite.m */; };
+		0FDB67CF1DF801F700A444A4 /* ZhengCacheTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB67CB1DF801F700A444A4 /* ZhengCacheTool.m */; };
+		0FDB67D51DF8023400A444A4 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB67D21DF8023400A444A4 /* NSString+Extension.m */; };
+		0FDB67D61DF8023400A444A4 /* ZhengParameterFieldConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB67D41DF8023400A444A4 /* ZhengParameterFieldConst.m */; };
+		0FDB67D91DF804DD00A444A4 /* ZhengDownloadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB67D81DF804DD00A444A4 /* ZhengDownloadRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +76,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F284FCB1DF90111006AB3EA /* ZhengUploadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengUploadRequest.h; sourceTree = "<group>"; };
+		0F284FCC1DF90111006AB3EA /* ZhengUploadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengUploadRequest.m; sourceTree = "<group>"; };
+		0F284FCE1DF90866006AB3EA /* ZhengMultiUploadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengMultiUploadRequest.h; sourceTree = "<group>"; };
+		0F284FCF1DF90866006AB3EA /* ZhengMultiUploadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengMultiUploadRequest.m; sourceTree = "<group>"; };
 		0F4A320D1DE8227500B0A245 /* ZhengNetWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZhengNetWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F4A32111DE8227500B0A245 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0F4A32131DE8227500B0A245 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -141,23 +151,31 @@
 		0F4A32961DE823B200B0A245 /* JsonArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonArrayModel.m; sourceTree = "<group>"; };
 		0F4A32981DE823B800B0A245 /* PageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageModel.h; sourceTree = "<group>"; };
 		0F4A32991DE823B800B0A245 /* PageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageModel.m; sourceTree = "<group>"; };
-		0F4A329C1DE823C000B0A245 /* ZhengCacheCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengCacheCoding.h; sourceTree = "<group>"; };
-		0F4A329D1DE823C000B0A245 /* ZhengCacheCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengCacheCoding.m; sourceTree = "<group>"; };
-		0F4A329E1DE823C000B0A245 /* ZhengCacheDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengCacheDirectory.h; sourceTree = "<group>"; };
-		0F4A329F1DE823C000B0A245 /* ZhengCacheDirectory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengCacheDirectory.m; sourceTree = "<group>"; };
-		0F4A32A01DE823C000B0A245 /* ZhengCacheSQLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengCacheSQLite.h; sourceTree = "<group>"; };
-		0F4A32A11DE823C000B0A245 /* ZhengCacheSQLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengCacheSQLite.m; sourceTree = "<group>"; };
-		0F4A32A21DE823C000B0A245 /* ZhengCacheTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengCacheTool.h; sourceTree = "<group>"; };
-		0F4A32A31DE823C000B0A245 /* ZhengCacheTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengCacheTool.m; sourceTree = "<group>"; };
-		0F4A32A41DE823C000B0A245 /* ZhengConvertModelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengConvertModelTool.h; sourceTree = "<group>"; };
-		0F4A32A51DE823C000B0A245 /* ZhengConvertModelTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengConvertModelTool.m; sourceTree = "<group>"; };
-		0F4A32A61DE823C000B0A245 /* ZhengHttpCacheTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengHttpCacheTool.h; sourceTree = "<group>"; };
-		0F4A32A71DE823C000B0A245 /* ZhengHttpCacheTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengHttpCacheTool.m; sourceTree = "<group>"; };
-		0F4A32A81DE823C000B0A245 /* ZhengHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengHttpTool.h; sourceTree = "<group>"; };
-		0F4A32A91DE823C000B0A245 /* ZhengHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengHttpTool.m; sourceTree = "<group>"; };
-		0F4A32AA1DE823C000B0A245 /* ZhengNetworkHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengNetworkHeader.h; sourceTree = "<group>"; };
-		0F4A32AB1DE823C000B0A245 /* ZhengParameterFieldConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengParameterFieldConst.h; sourceTree = "<group>"; };
-		0F4A32AC1DE823C000B0A245 /* ZhengParameterFieldConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengParameterFieldConst.m; sourceTree = "<group>"; };
+		0FDB67A51DF7D7DC00A444A4 /* ZhengNetWork+Error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZhengNetWork+Error.h"; sourceTree = "<group>"; };
+		0FDB67A61DF7D7DC00A444A4 /* ZhengNetWork+Error.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZhengNetWork+Error.m"; sourceTree = "<group>"; };
+		0FDB67A71DF7D7DC00A444A4 /* ZhengNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengNetWork.h; sourceTree = "<group>"; };
+		0FDB67A81DF7D7DC00A444A4 /* ZhengNetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengNetWork.m; sourceTree = "<group>"; };
+		0FDB67A91DF7D7DC00A444A4 /* ZhengNetworkHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengNetworkHeader.h; sourceTree = "<group>"; };
+		0FDB67AA1DF7D7DC00A444A4 /* ZhengPageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengPageRequest.h; sourceTree = "<group>"; };
+		0FDB67AB1DF7D7DC00A444A4 /* ZhengPageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengPageRequest.m; sourceTree = "<group>"; };
+		0FDB67B01DF7D7DC00A444A4 /* ZhengRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengRequest.h; sourceTree = "<group>"; };
+		0FDB67B11DF7D7DC00A444A4 /* ZhengRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengRequest.m; sourceTree = "<group>"; };
+		0FDB67C01DF801CB00A444A4 /* ZhengParseTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengParseTool.h; sourceTree = "<group>"; };
+		0FDB67C11DF801CB00A444A4 /* ZhengParseTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengParseTool.m; sourceTree = "<group>"; };
+		0FDB67C41DF801F700A444A4 /* ZhengCacheCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengCacheCoding.h; sourceTree = "<group>"; };
+		0FDB67C51DF801F700A444A4 /* ZhengCacheCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengCacheCoding.m; sourceTree = "<group>"; };
+		0FDB67C61DF801F700A444A4 /* ZhengCacheDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengCacheDirectory.h; sourceTree = "<group>"; };
+		0FDB67C71DF801F700A444A4 /* ZhengCacheDirectory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengCacheDirectory.m; sourceTree = "<group>"; };
+		0FDB67C81DF801F700A444A4 /* ZhengCacheSQLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengCacheSQLite.h; sourceTree = "<group>"; };
+		0FDB67C91DF801F700A444A4 /* ZhengCacheSQLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengCacheSQLite.m; sourceTree = "<group>"; };
+		0FDB67CA1DF801F700A444A4 /* ZhengCacheTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengCacheTool.h; sourceTree = "<group>"; };
+		0FDB67CB1DF801F700A444A4 /* ZhengCacheTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengCacheTool.m; sourceTree = "<group>"; };
+		0FDB67D11DF8023400A444A4 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		0FDB67D21DF8023400A444A4 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		0FDB67D31DF8023400A444A4 /* ZhengParameterFieldConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengParameterFieldConst.h; sourceTree = "<group>"; };
+		0FDB67D41DF8023400A444A4 /* ZhengParameterFieldConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengParameterFieldConst.m; sourceTree = "<group>"; };
+		0FDB67D71DF804DD00A444A4 /* ZhengDownloadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengDownloadRequest.h; sourceTree = "<group>"; };
+		0FDB67D81DF804DD00A444A4 /* ZhengDownloadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengDownloadRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,7 +242,7 @@
 				0F4A32961DE823B200B0A245 /* JsonArrayModel.m */,
 				0F4A32981DE823B800B0A245 /* PageModel.h */,
 				0F4A32991DE823B800B0A245 /* PageModel.m */,
-				0F4A329B1DE823C000B0A245 /* ZhengNetWorkTool */,
+				0FDB679A1DF7D7DC00A444A4 /* ZhengNetWork */,
 				0F4A32191DE8227500B0A245 /* Main.storyboard */,
 				0F4A321F1DE8227500B0A245 /* Assets.xcassets */,
 				0F4A32211DE8227500B0A245 /* LaunchScreen.storyboard */,
@@ -344,28 +362,64 @@
 			path = MJExtension;
 			sourceTree = "<group>";
 		};
-		0F4A329B1DE823C000B0A245 /* ZhengNetWorkTool */ = {
+		0FDB679A1DF7D7DC00A444A4 /* ZhengNetWork */ = {
 			isa = PBXGroup;
 			children = (
-				0F4A329C1DE823C000B0A245 /* ZhengCacheCoding.h */,
-				0F4A329D1DE823C000B0A245 /* ZhengCacheCoding.m */,
-				0F4A329E1DE823C000B0A245 /* ZhengCacheDirectory.h */,
-				0F4A329F1DE823C000B0A245 /* ZhengCacheDirectory.m */,
-				0F4A32A01DE823C000B0A245 /* ZhengCacheSQLite.h */,
-				0F4A32A11DE823C000B0A245 /* ZhengCacheSQLite.m */,
-				0F4A32A21DE823C000B0A245 /* ZhengCacheTool.h */,
-				0F4A32A31DE823C000B0A245 /* ZhengCacheTool.m */,
-				0F4A32A41DE823C000B0A245 /* ZhengConvertModelTool.h */,
-				0F4A32A51DE823C000B0A245 /* ZhengConvertModelTool.m */,
-				0F4A32A61DE823C000B0A245 /* ZhengHttpCacheTool.h */,
-				0F4A32A71DE823C000B0A245 /* ZhengHttpCacheTool.m */,
-				0F4A32A81DE823C000B0A245 /* ZhengHttpTool.h */,
-				0F4A32A91DE823C000B0A245 /* ZhengHttpTool.m */,
-				0F4A32AA1DE823C000B0A245 /* ZhengNetworkHeader.h */,
-				0F4A32AB1DE823C000B0A245 /* ZhengParameterFieldConst.h */,
-				0F4A32AC1DE823C000B0A245 /* ZhengParameterFieldConst.m */,
+				0FDB67A91DF7D7DC00A444A4 /* ZhengNetworkHeader.h */,
+				0FDB67A71DF7D7DC00A444A4 /* ZhengNetWork.h */,
+				0FDB67A81DF7D7DC00A444A4 /* ZhengNetWork.m */,
+				0FDB67A51DF7D7DC00A444A4 /* ZhengNetWork+Error.h */,
+				0FDB67A61DF7D7DC00A444A4 /* ZhengNetWork+Error.m */,
+				0FDB67B01DF7D7DC00A444A4 /* ZhengRequest.h */,
+				0FDB67B11DF7D7DC00A444A4 /* ZhengRequest.m */,
+				0FDB67AA1DF7D7DC00A444A4 /* ZhengPageRequest.h */,
+				0FDB67AB1DF7D7DC00A444A4 /* ZhengPageRequest.m */,
+				0FDB67D71DF804DD00A444A4 /* ZhengDownloadRequest.h */,
+				0FDB67D81DF804DD00A444A4 /* ZhengDownloadRequest.m */,
+				0F284FCB1DF90111006AB3EA /* ZhengUploadRequest.h */,
+				0F284FCC1DF90111006AB3EA /* ZhengUploadRequest.m */,
+				0F284FCE1DF90866006AB3EA /* ZhengMultiUploadRequest.h */,
+				0F284FCF1DF90866006AB3EA /* ZhengMultiUploadRequest.m */,
+				0FDB67BF1DF801CB00A444A4 /* PraseTool */,
+				0FDB67C31DF801F700A444A4 /* CacheTool */,
+				0FDB67D01DF8023400A444A4 /* Public */,
 			);
-			path = ZhengNetWorkTool;
+			path = ZhengNetWork;
+			sourceTree = "<group>";
+		};
+		0FDB67BF1DF801CB00A444A4 /* PraseTool */ = {
+			isa = PBXGroup;
+			children = (
+				0FDB67C01DF801CB00A444A4 /* ZhengParseTool.h */,
+				0FDB67C11DF801CB00A444A4 /* ZhengParseTool.m */,
+			);
+			path = PraseTool;
+			sourceTree = "<group>";
+		};
+		0FDB67C31DF801F700A444A4 /* CacheTool */ = {
+			isa = PBXGroup;
+			children = (
+				0FDB67CA1DF801F700A444A4 /* ZhengCacheTool.h */,
+				0FDB67CB1DF801F700A444A4 /* ZhengCacheTool.m */,
+				0FDB67C41DF801F700A444A4 /* ZhengCacheCoding.h */,
+				0FDB67C51DF801F700A444A4 /* ZhengCacheCoding.m */,
+				0FDB67C81DF801F700A444A4 /* ZhengCacheSQLite.h */,
+				0FDB67C91DF801F700A444A4 /* ZhengCacheSQLite.m */,
+				0FDB67C61DF801F700A444A4 /* ZhengCacheDirectory.h */,
+				0FDB67C71DF801F700A444A4 /* ZhengCacheDirectory.m */,
+			);
+			path = CacheTool;
+			sourceTree = "<group>";
+		};
+		0FDB67D01DF8023400A444A4 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				0FDB67D11DF8023400A444A4 /* NSString+Extension.h */,
+				0FDB67D21DF8023400A444A4 /* NSString+Extension.m */,
+				0FDB67D31DF8023400A444A4 /* ZhengParameterFieldConst.h */,
+				0FDB67D41DF8023400A444A4 /* ZhengParameterFieldConst.m */,
+			);
+			path = Public;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -504,39 +558,45 @@
 				0F4A327E1DE8239400B0A245 /* AFSecurityPolicy.m in Sources */,
 				0F4A328A1DE8239400B0A245 /* MJProperty.m in Sources */,
 				0F4A32801DE8239400B0A245 /* AFURLResponseSerialization.m in Sources */,
+				0FDB67CC1DF801F700A444A4 /* ZhengCacheCoding.m in Sources */,
 				0F4A32881DE8239400B0A245 /* MJExtensionConst.m in Sources */,
 				0F4A32891DE8239400B0A245 /* MJFoundation.m in Sources */,
 				0F4A32841DE8239400B0A245 /* FMDatabasePool.m in Sources */,
+				0FDB67CD1DF801F700A444A4 /* ZhengCacheDirectory.m in Sources */,
 				0F4A32911DE8239400B0A245 /* NSString+MJExtension.m in Sources */,
+				0FDB67C21DF801CB00A444A4 /* ZhengParseTool.m in Sources */,
+				0FDB67D91DF804DD00A444A4 /* ZhengDownloadRequest.m in Sources */,
 				0F4A32851DE8239400B0A245 /* FMDatabaseQueue.m in Sources */,
 				0F4A328B1DE8239400B0A245 /* MJPropertyKey.m in Sources */,
 				0F4A32181DE8227500B0A245 /* ViewController.m in Sources */,
+				0F284FD01DF90866006AB3EA /* ZhengMultiUploadRequest.m in Sources */,
 				0F4A32871DE8239400B0A245 /* NSArray+Log.m in Sources */,
+				0FDB67CE1DF801F700A444A4 /* ZhengCacheSQLite.m in Sources */,
 				0F4A32151DE8227500B0A245 /* AppDelegate.m in Sources */,
-				0F4A32AE1DE823C000B0A245 /* ZhengCacheDirectory.m in Sources */,
 				0F4A327C1DE8239400B0A245 /* AFHTTPSessionManager.m in Sources */,
-				0F4A32B21DE823C000B0A245 /* ZhengHttpCacheTool.m in Sources */,
-				0F4A32B01DE823C000B0A245 /* ZhengCacheTool.m in Sources */,
 				0F4A32971DE823B200B0A245 /* JsonArrayModel.m in Sources */,
-				0F4A32AF1DE823C000B0A245 /* ZhengCacheSQLite.m in Sources */,
 				0F4A329A1DE823B800B0A245 /* PageModel.m in Sources */,
+				0FDB67D51DF8023400A444A4 /* NSString+Extension.m in Sources */,
 				0F4A32901DE8239400B0A245 /* NSObject+MJProperty.m in Sources */,
+				0FDB67D61DF8023400A444A4 /* ZhengParameterFieldConst.m in Sources */,
 				0F4A328C1DE8239400B0A245 /* MJPropertyType.m in Sources */,
 				0F4A32811DE8239400B0A245 /* AFURLSessionManager.m in Sources */,
 				0F4A32121DE8227500B0A245 /* main.m in Sources */,
+				0FDB67BC1DF7D7DC00A444A4 /* ZhengRequest.m in Sources */,
 				0F4A32861DE8239400B0A245 /* FMResultSet.m in Sources */,
+				0FDB67B91DF7D7DC00A444A4 /* ZhengPageRequest.m in Sources */,
 				0F4A328F1DE8239400B0A245 /* NSObject+MJKeyValue.m in Sources */,
-				0F4A32AD1DE823C000B0A245 /* ZhengCacheCoding.m in Sources */,
 				0F4A327D1DE8239400B0A245 /* AFNetworkReachabilityManager.m in Sources */,
+				0F284FCD1DF90111006AB3EA /* ZhengUploadRequest.m in Sources */,
 				0F4A328D1DE8239400B0A245 /* NSObject+MJClass.m in Sources */,
 				0F4A328E1DE8239400B0A245 /* NSObject+MJCoding.m in Sources */,
 				0F4A321E1DE8227500B0A245 /* ZhengNetWork.xcdatamodeld in Sources */,
+				0FDB67CF1DF801F700A444A4 /* ZhengCacheTool.m in Sources */,
 				0F4A32941DE823AD00B0A245 /* JsonDicModel.m in Sources */,
+				0FDB67B81DF7D7DC00A444A4 /* ZhengNetWork.m in Sources */,
+				0FDB67B71DF7D7DC00A444A4 /* ZhengNetWork+Error.m in Sources */,
 				0F4A32821DE8239400B0A245 /* FMDatabase.m in Sources */,
-				0F4A32B31DE823C000B0A245 /* ZhengHttpTool.m in Sources */,
 				0F4A327F1DE8239400B0A245 /* AFURLRequestSerialization.m in Sources */,
-				0F4A32B41DE823C000B0A245 /* ZhengParameterFieldConst.m in Sources */,
-				0F4A32B11DE823C000B0A245 /* ZhengConvertModelTool.m in Sources */,
 				0F4A32831DE8239400B0A245 /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

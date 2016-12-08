@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 //请求参数中的page字段
 NSString * const ParameterPageFiled = @"page";
 //请求参数中的limit字段

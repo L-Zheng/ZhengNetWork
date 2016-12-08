@@ -1,25 +1,23 @@
 //
 //  ZhengCacheCoding.m
-//  AFN封装使用
+//  ZhengNetWork
 //
-//  Created by 李保征 on 16/7/21.
+//  Created by 李保征 on 2016/12/7.
 //  Copyright © 2016年 李保征. All rights reserved.
 //
 
 #import "ZhengCacheCoding.h"
-#import "ZhengCacheDirectory.h"
 #import "ZhengParameterFieldConst.h"
-
 
 @implementation ZhengCacheCoding
 
-#pragma mark - 缓存读取数据   列表分页数据  （数据类型数组）
-/** 缓存数据 Coding */
-+ (BOOL)cacheArray:(NSArray *)cacheArray class:(Class)ClassName parameters:(NSDictionary *)parameters{
++ (BOOL)cachePageJson:(NSArray *)cacheArray zhengPageRequest:(ZhengPageRequest *)zhengPageRequest{
+    
+    NSString *urlStr = zhengPageRequest.urlStr;
+    CacheMethod cacheMethod = zhengPageRequest.cacheMethod;
     
     //缓存完整路径
-    //  (Library/Caches/LiBaoZhengCache/LiBaoZhengCacheCoding/ClassName/ClassName_CacheData.data)
-    NSString *cachefullPath = [ZhengCacheDirectory cacheFullPathWithDirectory:NSStringFromClass(ClassName) cacheMethod:CacheMethodCoding];
+    NSString *cachefullPath = [ZhengCacheDirectory cacheFullPathWithDirectory:urlStr cacheMethod:cacheMethod];
     
     //1.读取全部缓存
     NSArray *readArray = [NSKeyedUnarchiver unarchiveObjectWithFile:cachefullPath];
@@ -29,7 +27,7 @@
         return [NSKeyedArchiver archiveRootObject:cacheArray toFile:cachefullPath];
         
     }else{
-        //2.拿出旧数据
+        //拿出旧数据
         NSMutableArray *oldCacheArray = [NSMutableArray arrayWithArray:readArray];
         //拿出新数据
         NSMutableArray *newCacheArray = [NSMutableArray arrayWithArray:cacheArray];
@@ -62,24 +60,25 @@
     }
 }
 
-/** 读取数据 Coding 指定参数 */
-+ (NSArray *)readArrayClass:(Class)ClassName parameters:(NSDictionary *)parameters{
++ (NSArray *)readPageJson:(ZhengPageRequest *)zhengPageRequest{
+    
+    NSString *urlStr = zhengPageRequest.urlStr;
+    CacheMethod cacheMethod = zhengPageRequest.cacheMethod;
     
     //缓存完整路径  数据库文件用不到page字段
-    //  (Library/Caches/LiBaoZhengCache/LiBaoZhengCacheCoding/ClassName/ClassName_CacheData.data)
-    NSString *cachefullPath = [ZhengCacheDirectory cacheFullPathWithDirectory:NSStringFromClass(ClassName) cacheMethod:CacheMethodCoding];
+    NSString *cachefullPath = [ZhengCacheDirectory cacheFullPathWithDirectory:urlStr cacheMethod:cacheMethod];
     
     //不存在文件直接返回空
     if (![ZhengCacheDirectory fileIsExistsAtPath:cachefullPath]){
         return nil;
     }
-    
-    //设置页码 默认为1
-    NSString *pageStr = [NSString stringWithFormat:@"%@",parameters[ParameterPageFiled]];
-    NSInteger page = ((pageStr == nil || pageStr.integerValue <= 1) ? 1 : pageStr.integerValue);
-    //限制条数  默认为10
-    NSString *limitStr = [NSString stringWithFormat:@"%@",parameters[ParameterLimitFiled]];
-    NSInteger limit = ((limitStr == nil) ? 10 : limitStr.integerValue);
+    //缓存过期
+    if ([ZhengCacheDirectory fileIsExpiredAtPath:cachefullPath expiredTime:zhengPageRequest.expiredTime]) {
+        return nil;
+    }
+    //设置页码  限制条数
+    NSInteger page = zhengPageRequest.page;
+    NSInteger limit = zhengPageRequest.limit.integerValue;
     
     //读取数据
     NSArray *readArray = [NSKeyedUnarchiver unarchiveObjectWithFile:cachefullPath];
@@ -114,36 +113,34 @@
     return [readMutableArray objectsAtIndexes:indexSet];
 }
 
-#pragma mark - 缓存读取数据   不是分页数据  单纯Json字典或者数
-/** 缓存数据 不是分页数据 单纯Json字典或者数 Coding */
-+ (BOOL)cacheJson:(id)cacheJson class:(Class)ClassName parameters:(NSDictionary *)parameters{
+
++ (BOOL)cacheJson:(id)cacheJson zhengRequest:(ZhengRequest *)zhengRequest{
     
     if (cacheJson == nil) return NO;
     
+    NSString *urlStr = zhengRequest.urlStr;
+    CacheMethod cacheMethod = zhengRequest.cacheMethod;
     //缓存完整路径
-    //  (Library/Caches/LiBaoZhengCache/LiBaoZhengCacheCoding/ClassName/ClassName_CacheData.data)
-    NSString *cachefullPath = [ZhengCacheDirectory cacheFullPathWithDirectory:NSStringFromClass(ClassName) cacheMethod:CacheMethodCoding];
+    NSString *cachefullPath = [ZhengCacheDirectory cacheFullPathWithDirectory:urlStr cacheMethod:cacheMethod];
     
-    if ([cacheJson isKindOfClass:[NSArray class]]) {
-        NSArray *cacheArray = (NSArray *)cacheJson;
-        //缓存到本地 归档 (如果原来已经存在该文件 会覆盖数据)
-        return [NSKeyedArchiver archiveRootObject:cacheArray toFile:cachefullPath];
-    }else if ([cacheJson isKindOfClass:[NSDictionary class]]){
-        NSArray *cacheDic = (NSArray *)cacheJson;
-        //缓存到本地 归档 (如果原来已经存在该文件 会覆盖数据)
-        return [NSKeyedArchiver archiveRootObject:cacheDic toFile:cachefullPath];
-    }else{
-        return NO;
-    }
+    return [NSKeyedArchiver archiveRootObject:cacheJson toFile:cachefullPath];
 }
 
-/** 读取数据 不是分页数据 单纯Json字典或者数Coding 指定参数 */
-+ (id)readJsonClass:(Class)ClassName parameters:(NSDictionary *)parameters{
++ (id)readJson:(ZhengRequest *)zhengRequest{
     
+    NSString *urlStr = zhengRequest.urlStr;
+    CacheMethod cacheMethod = zhengRequest.cacheMethod;
     //缓存完整路径
-    //  (Library/Caches/LiBaoZhengCache/LiBaoZhengCacheCoding/ClassName/ClassName_CacheData.data)
-    NSString *cachefullPath = [ZhengCacheDirectory cacheFullPathWithDirectory:NSStringFromClass(ClassName) cacheMethod:CacheMethodCoding];
+    NSString *cachefullPath = [ZhengCacheDirectory cacheFullPathWithDirectory:urlStr cacheMethod:cacheMethod];
     
+    //不存在文件直接返回空
+    if (![ZhengCacheDirectory fileIsExistsAtPath:cachefullPath]){
+        return nil;
+    }
+    //缓存过期
+    if ([ZhengCacheDirectory fileIsExpiredAtPath:cachefullPath expiredTime:zhengRequest.expiredTime]) {
+        return nil;
+    }
     //读取数据
     id Json = [NSKeyedUnarchiver unarchiveObjectWithFile:cachefullPath];
     
