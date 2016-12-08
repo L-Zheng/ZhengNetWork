@@ -7,10 +7,10 @@
 //
 
 #import "ZhengNetWork.h"
+#import "ZhengBaseRequest.h"
 
 @interface ZhengNetWork (Error)
 
-/** 判断请求地址是否为空 */
-+ (NSError *)checkUrlStr:(NSString *)urlStr;
++ (NSError *)checkRequest:(ZhengBaseRequest *)zhengBaseRequest;
 
 @end

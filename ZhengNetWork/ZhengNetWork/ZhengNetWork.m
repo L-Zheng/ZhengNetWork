@@ -17,12 +17,13 @@
 
 + (void)sendRequest:(ZhengRequest *)zhengRequest success:(void (^)(id responseObject ,id modelObject))success failure:(void (^)(NSError *error))failure{
     
-    NSString *urlStr = zhengRequest.urlStr;
-    
-    //检查urlStr
-    NSError *myError = [ZhengNetWork checkUrlStr:urlStr];
+    //检查Request
+    NSError *myError = [ZhengNetWork checkRequest:zhengRequest];
     if (myError) {
-        failure(myError); return;
+        if (failure) {
+            failure(myError);
+        }
+        return;
     }
     
     //创建管理者
@@ -64,7 +65,16 @@
     }
 }
 
-+ (void)readCacheRequest:(ZhengRequest *)zhengRequest cache:(void (^)(id responseObject ,id modelObject))cache{
++ (void)readCacheRequest:(ZhengRequest *)zhengRequest cache:(void (^)(id responseObject ,id modelObject))cache failure:(void (^)(NSError *error))failure{
+    
+    //检查Request
+    NSError *myError = [ZhengNetWork checkRequest:zhengRequest];
+    if (myError) {
+        if (failure) {
+            failure(myError);
+        }
+        return;
+    }
     
     id cacheData = [ZhengCacheTool readData:zhengRequest];
     
@@ -76,13 +86,16 @@
            destination:(NSURL * (^)(NSURL *targetPath, NSURLResponse *response))destination
      completionHandler:(void (^)(NSURLResponse *response, NSURL *filePath, NSError *error))completionHandler{
     
-    NSString *urlStr = zhengDownloadRequest.urlStr;
-    
-    //检查urlStr
-    NSError *myError = [ZhengNetWork checkUrlStr:urlStr];
+    //检查Request
+    NSError *myError = [ZhengNetWork checkRequest:zhengDownloadRequest];
     if (myError) {
+        if (completionHandler) {
+            completionHandler(nil,nil,myError);
+        }
         return;
     }
+    
+    NSString *urlStr = zhengDownloadRequest.urlStr;
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -103,13 +116,16 @@
             progress:(void (^)(NSProgress *uploadProgress))uploadProgress
    completionHandler:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completionHandler{
     
-    NSString *urlStr = zhengUploadRequest.urlStr;
-    
-    //检查urlStr
-    NSError *myError = [ZhengNetWork checkUrlStr:urlStr];
+    //检查Request
+    NSError *myError = [ZhengNetWork checkRequest:zhengUploadRequest];
     if (myError) {
+        if (completionHandler) {
+            completionHandler(nil,nil,myError);
+        }
         return;
     }
+    
+    NSString *urlStr = zhengUploadRequest.urlStr;
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -132,13 +148,16 @@
            multiprogress:(void (^)(NSProgress *uploadProgress))uploadMultiProgress
        completionHandler:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completionHandler{
     
-    NSString *urlStr = zhengMultiUploadRequest.urlStr;
-    
-    //检查urlStr
-    NSError *myError = [ZhengNetWork checkUrlStr:urlStr];
+    //检查Request
+    NSError *myError = [ZhengNetWork checkRequest:zhengMultiUploadRequest];
     if (myError) {
+        if (completionHandler) {
+            completionHandler(nil,nil,myError);
+        }
         return;
     }
+    
+    NSString *urlStr = zhengMultiUploadRequest.urlStr;
     
     NSString *upLoadFilePath = zhengMultiUploadRequest.upLoadFilePath;
     NSString *fileName = zhengMultiUploadRequest.fileName;
@@ -162,6 +181,8 @@
     
     [uploadTask resume];
 }
+
+#pragma mark - Private func
 
 #pragma mark - Request func
 

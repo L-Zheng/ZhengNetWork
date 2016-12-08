@@ -6,7 +6,7 @@
 //  Copyright © 2016年 李保征. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "ZhengBaseRequest.h"
 #import "AFNetworking.h"
 
 typedef NS_ENUM(NSInteger, RequestStatus) {
@@ -29,13 +29,11 @@ typedef NS_ENUM(NSInteger, CacheMethod) {
     CacheMethod_SQLite      = 2,
 } NS_ENUM_AVAILABLE_IOS(6_0);
 
-@interface ZhengRequest : NSObject
+@interface ZhengRequest : ZhengBaseRequest
 
 #pragma mark - 请求参数
 
 //必传
-@property (nonatomic,copy) NSString *urlStr;
-
 @property (nonatomic,strong) NSDictionary *parameters;
 
 //可传

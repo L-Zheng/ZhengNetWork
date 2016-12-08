@@ -6,12 +6,10 @@
 //  Copyright © 2016年 李保征. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "ZhengBaseRequest.h"
 #import "AFNetworking.h"
 
-@interface ZhengDownloadRequest : NSObject
-
-@property (nonatomic, nonnull, copy) NSString *urlStr;
+@interface ZhengDownloadRequest : ZhengBaseRequest
 
 @property (nonatomic, nonnull, strong) NSURL *targetDirectoryURL;
 

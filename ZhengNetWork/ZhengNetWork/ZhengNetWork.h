@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ZhengBaseRequest.h"
 #import "ZhengRequest.h"
 #import "ZhengDownloadRequest.h"
 #import "ZhengUploadRequest.h"
@@ -16,7 +17,7 @@
 
 + (void)sendRequest:(ZhengRequest *)zhengRequest success:(void (^)(id responseObject ,id modelObject))success failure:(void (^)(NSError *error))failure;
 
-+ (void)readCacheRequest:(ZhengRequest *)zhengRequest cache:(void (^)(id responseObject ,id modelObject))cache;
++ (void)readCacheRequest:(ZhengRequest *)zhengRequest cache:(void (^)(id responseObject ,id modelObject))cache failure:(void (^)(NSError *error))failure;
 
 #pragma mark - download
 

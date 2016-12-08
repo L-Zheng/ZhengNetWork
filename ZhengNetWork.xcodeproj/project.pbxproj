@@ -44,6 +44,7 @@
 		0F4A32941DE823AD00B0A245 /* JsonDicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A32931DE823AD00B0A245 /* JsonDicModel.m */; };
 		0F4A32971DE823B200B0A245 /* JsonArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A32961DE823B200B0A245 /* JsonArrayModel.m */; };
 		0F4A329A1DE823B800B0A245 /* PageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A32991DE823B800B0A245 /* PageModel.m */; };
+		0F5CEA471DF9339B006BA029 /* ZhengBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5CEA461DF9339B006BA029 /* ZhengBaseRequest.m */; };
 		0FDB67B71DF7D7DC00A444A4 /* ZhengNetWork+Error.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB67A61DF7D7DC00A444A4 /* ZhengNetWork+Error.m */; };
 		0FDB67B81DF7D7DC00A444A4 /* ZhengNetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB67A81DF7D7DC00A444A4 /* ZhengNetWork.m */; };
 		0FDB67B91DF7D7DC00A444A4 /* ZhengPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB67AB1DF7D7DC00A444A4 /* ZhengPageRequest.m */; };
@@ -151,6 +152,8 @@
 		0F4A32961DE823B200B0A245 /* JsonArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonArrayModel.m; sourceTree = "<group>"; };
 		0F4A32981DE823B800B0A245 /* PageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageModel.h; sourceTree = "<group>"; };
 		0F4A32991DE823B800B0A245 /* PageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageModel.m; sourceTree = "<group>"; };
+		0F5CEA451DF9339B006BA029 /* ZhengBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengBaseRequest.h; sourceTree = "<group>"; };
+		0F5CEA461DF9339B006BA029 /* ZhengBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhengBaseRequest.m; sourceTree = "<group>"; };
 		0FDB67A51DF7D7DC00A444A4 /* ZhengNetWork+Error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZhengNetWork+Error.h"; sourceTree = "<group>"; };
 		0FDB67A61DF7D7DC00A444A4 /* ZhengNetWork+Error.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZhengNetWork+Error.m"; sourceTree = "<group>"; };
 		0FDB67A71DF7D7DC00A444A4 /* ZhengNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhengNetWork.h; sourceTree = "<group>"; };
@@ -370,6 +373,8 @@
 				0FDB67A81DF7D7DC00A444A4 /* ZhengNetWork.m */,
 				0FDB67A51DF7D7DC00A444A4 /* ZhengNetWork+Error.h */,
 				0FDB67A61DF7D7DC00A444A4 /* ZhengNetWork+Error.m */,
+				0F5CEA451DF9339B006BA029 /* ZhengBaseRequest.h */,
+				0F5CEA461DF9339B006BA029 /* ZhengBaseRequest.m */,
 				0FDB67B01DF7D7DC00A444A4 /* ZhengRequest.h */,
 				0FDB67B11DF7D7DC00A444A4 /* ZhengRequest.m */,
 				0FDB67AA1DF7D7DC00A444A4 /* ZhengPageRequest.h */,
@@ -572,6 +577,7 @@
 				0F284FD01DF90866006AB3EA /* ZhengMultiUploadRequest.m in Sources */,
 				0F4A32871DE8239400B0A245 /* NSArray+Log.m in Sources */,
 				0FDB67CE1DF801F700A444A4 /* ZhengCacheSQLite.m in Sources */,
+				0F5CEA471DF9339B006BA029 /* ZhengBaseRequest.m in Sources */,
 				0F4A32151DE8227500B0A245 /* AppDelegate.m in Sources */,
 				0F4A327C1DE8239400B0A245 /* AFHTTPSessionManager.m in Sources */,
 				0F4A32971DE823B200B0A245 /* JsonArrayModel.m in Sources */,

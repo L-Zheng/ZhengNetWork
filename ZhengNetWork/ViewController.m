@@ -28,7 +28,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    //    [self requestJsonDicDataNoCache];
+        [self requestJsonDicDataNoCache];
     //    [self requestListPageDataNoCache];
     
 //    [self requestJsonDicDataCache];
@@ -41,7 +41,10 @@
 
 - (void)requestJsonDicDataNoCache{
     ZhengRequest *zhengRequest = [[ZhengRequest alloc] init];
+//    zhengRequest.enableHTTPS = YES;
+//    zhengRequest.baseUrlStr = @"https://";
     zhengRequest.urlStr = @"https://itunes.apple.com/lookup";
+//    zhengRequest.urlStr = @"itunes.apple.com/lookup";
     zhengRequest.parameters = @{@"id":@"444934666"};
     zhengRequest.cacheMethod = CacheMethod_Coding;
     
@@ -49,7 +52,7 @@
         NSLog(@"%@",responseObject);
         NSLog(@"%ld",zhengRequest.requestStatus);
     } failure:^(NSError *error) {
-        
+        NSLog(@"--------------------");
     }];
     //不可连用  一个请求一个状态
     //    [ZhengNetWork sendRequest:zhengRequest success:^(id responseObject) {
@@ -100,6 +103,8 @@
         NSLog(@"%@",responseObject);
         NSLog(@"%@",modelObject);
         NSLog(@"%ld",zhengRequest.requestStatus);
+    } failure:^(NSError *error) {
+        
     }];
 }
 
@@ -126,6 +131,8 @@
         NSLog(@"%@",responseObject);
         NSLog(@"%@",modelObject);
         NSLog(@"%ld",zhengPageRequest.requestStatus);
+    } failure:^(NSError *error) {
+        
     }];
     
     //    [zhengRequest stopRequest];
