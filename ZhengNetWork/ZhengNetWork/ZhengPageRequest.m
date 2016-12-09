@@ -22,14 +22,14 @@
 
 - (NSInteger)page{
     if (_page <= 0) {
-        _page = DefaultPage;
+        _page = DefaultRequestPage;
     }
     return _page;
 }
 
 - (NSNumber *)limit{
     if (!_limit) {
-        _limit = @(DefaultLimit);
+        _limit = @(DefaultRequestLimit);
     }
     return _limit;
 }

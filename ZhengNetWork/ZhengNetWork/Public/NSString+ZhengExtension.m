@@ -1,21 +1,20 @@
 //
-//  NSString+Extension.m
+//  NSString+ZhengExtension.m
 //  ZhengNetWork
 //
-//  Created by 李保征 on 2016/12/6.
+//  Created by 李保征 on 2016/12/9.
 //  Copyright © 2016年 李保征. All rights reserved.
 //
 
-#import "NSString+Extension.h"
+#import "NSString+ZhengExtension.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonHMAC.h>
 
-
-@implementation NSString (Extension)
+@implementation NSString (ZhengExtension)
 
 @end
 
-@implementation NSString (isValue)
+@implementation NSString (ZhengIsValue)
 
 - (BOOL)isValue{
     if ((self == nil || [self isEqual:[NSNull null]] || [self isEqualToString:@""])) {
@@ -27,7 +26,7 @@
 
 @end
 
-@implementation NSString (Hash)
+@implementation NSString (ZhengHash)
 
 - (NSString *)md5String
 {

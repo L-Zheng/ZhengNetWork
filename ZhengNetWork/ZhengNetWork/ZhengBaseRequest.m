@@ -7,7 +7,7 @@
 //
 
 #import "ZhengBaseRequest.h"
-#import "NSString+Extension.h"
+#import "NSString+ZhengExtension.h"
 
 @implementation ZhengBaseRequest
 
@@ -23,9 +23,7 @@
 
 - (void)setUrlStr:(NSString *)urlStr{
     if ([urlStr isValue]) {
-        
         _urlStr = urlStr;
-        
     } else {
         _urlStr = nil;
     }

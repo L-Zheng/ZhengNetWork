@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#define DefaultPage 1
-#define DefaultLimit 30
+#define DefaultRequestPage 1
+#define DefaultRequestLimit 30
 
 //限制数据库文件大小 50M
 #define SqliteFileLimtSize (50 * 1024 * 1024)

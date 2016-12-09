@@ -7,7 +7,7 @@
 //
 
 #import "ZhengCacheDirectory.h"
-#import "NSString+Extension.h"
+#import "NSString+ZhengExtension.h"
 
 @implementation ZhengCacheDirectory
 

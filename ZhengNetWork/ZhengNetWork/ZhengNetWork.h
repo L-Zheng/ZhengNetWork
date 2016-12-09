@@ -15,6 +15,8 @@
 
 @interface ZhengNetWork : NSObject
 
+#pragma mark - Request
+
 + (void)sendRequest:(ZhengRequest *)zhengRequest success:(void (^)(id responseObject ,id modelObject))success failure:(void (^)(NSError *error))failure;
 
 + (void)readCacheRequest:(ZhengRequest *)zhengRequest cache:(void (^)(id responseObject ,id modelObject))cache failure:(void (^)(NSError *error))failure;

@@ -1,24 +1,24 @@
 //
-//  NSString+Extension.h
+//  NSString+ZhengExtension.h
 //  ZhengNetWork
 //
-//  Created by 李保征 on 2016/12/6.
+//  Created by 李保征 on 2016/12/9.
 //  Copyright © 2016年 李保征. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface NSString (Extension)
+@interface NSString (ZhengExtension)
 
 @end
 
-@interface NSString (isValue)
+@interface NSString (ZhengIsValue)
 
 - (BOOL)isValue;
 
 @end
 
-@interface NSString (Hash)
+@interface NSString (ZhengHash)
 
 @property (nonatomic,copy,readonly) NSString *md5String;
 @property (nonatomic,copy,readonly) NSString *sha1String;
