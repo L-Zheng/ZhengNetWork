@@ -31,27 +31,25 @@ typedef NS_ENUM(NSInteger, CacheMethod) {
 
 @interface ZhengRequest : ZhengBaseRequest
 
-#pragma mark - 请求参数
+#pragma mark - 请求参数  //可传
 
-//必传
-@property (nonatomic,strong) NSDictionary *parameters;
+@property (nonatomic,strong) NSDictionary *parameters;//参数
 
-//可传
 @property (nonatomic,strong) Class className;//需要转模型的类
 
-@property (nonatomic,strong) NSDictionary *header; //默认nil
-
-@property (nonatomic,strong) NSNumber *timeOut; //默认10s
-
 @property (nonatomic,assign) RequestType requestType;//默认get
-
-@property (nonatomic,assign) NSTimeInterval expiredTime;//缓存过期时间 默认30天
 
 /** 普通请求只支持Coding存储 */
 @property (nonatomic,assign) CacheMethod cacheMethod;//默认NoCache
 
 /** 分页请求并且要求缓存时  必传 */
 @property (nonatomic,copy) NSString *needJsonField;//需要的字段
+
+@property (nonatomic,strong) NSDictionary *header; //默认nil
+
+@property (nonatomic,strong) NSNumber *timeOut; //默认10s
+
+@property (nonatomic,assign) NSTimeInterval expiredTime;//缓存过期时间 默认30天
 
 #pragma mark - 请求管理者
 
