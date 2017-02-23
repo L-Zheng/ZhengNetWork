@@ -28,6 +28,8 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
+//    [self test];
+    
         [self requestJsonDicDataNoCache];
     //    [self requestListPageDataNoCache];
     
@@ -37,6 +39,43 @@
 //    [self downloadFile];
     
 //    [self uploadFile];
+}
+
+
+- (void)test{
+    ZhengRequest *request = [[ZhengRequest alloc] init];
+    request.urlStr = @"http://139.196.20.6:10001/notify/config/update";
+    request.requestType = RequestType_Post;
+    
+    request.parameters = @{
+                           @"announce_flag" : @"0",
+                           @"decline_limit" : @"1111111.00",
+                           @"decline_limit_switch" : @"1",
+                           @"frequency" : @"2",
+                           @"pcp_limit" : @"1.200000",
+                           @"pcp_limit_switch" : @"1",
+                           @"raise_limit" : @"2222222.00",
+                           @"raise_limit_switch" : @"1",
+                           @"recent_day_high_price" : @"3258.26",
+                           @"recent_day_low_price" : @"3094.01",
+                           @"recent_high_price_day" : @"20",
+                           @"recent_low_price_day" : @"20",
+                           @"report_flag" : @"0",
+                           @"symbol" : @"000001.SS",
+                           };
+    request.cacheMethod = CacheMethod_NoCache;
+    request.header = @{
+                       @"X-Ivanka-App":@"wscn|iOS|5.0.3|10.2|0",
+                       @"host":@"139.196.20.6",
+                       @"X-Ivanka-Token":@"i8B0IO/Rf/E9bUl6jnE0gH9H6rNeyu2vQx1uYG6WN4EaN54jF7QmPow2Z8DOMnsTfmVToke8s7X6G1xHz/+NFLMQ/aeAoZU/MzhGR33Vqrrz9+ko/Gop4nXsvY0xXBRftSJUmql07UVIegk1omqShJiy7Dj1wtwEx8UR56jvhzXDWF9FZOobYI4YalVkxKtR"
+                       };
+    
+    [ZhengNetWork sendRequest:request success:^(id responseObject ,id modelObject) {
+        NSLog(@"%@",responseObject);
+        NSLog(@"%ld",request.requestStatus);
+    } failure:^(NSError *error) {
+        NSLog(@"--------------------");
+    }];
 }
 
 - (void)requestJsonDicDataNoCache{

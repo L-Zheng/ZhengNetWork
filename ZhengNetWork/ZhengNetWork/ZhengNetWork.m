@@ -196,10 +196,14 @@
     [zhengRequest.sessionManager GET:urlStr parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [ZhengNetWork callBackSuccess:zhengRequest responseObject:responseObject success:success];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [ZhengNetWork callBackSuccess:zhengRequest responseObject:responseObject success:success];
+        });
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [ZhengNetWork callBackFailure:zhengRequest error:error failure:failure];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [ZhengNetWork callBackFailure:zhengRequest error:error failure:failure];
+        });
         
     }];
 }
@@ -214,10 +218,14 @@
     [zhengRequest.sessionManager POST:urlStr parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [ZhengNetWork callBackSuccess:zhengRequest responseObject:responseObject success:success];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [ZhengNetWork callBackSuccess:zhengRequest responseObject:responseObject success:success];
+        });
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [ZhengNetWork callBackFailure:zhengRequest error:error failure:failure];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [ZhengNetWork callBackFailure:zhengRequest error:error failure:failure];
+        });
         
     }];
 }
