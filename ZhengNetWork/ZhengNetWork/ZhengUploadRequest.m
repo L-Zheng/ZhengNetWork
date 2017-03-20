@@ -10,33 +10,4 @@
 
 @implementation ZhengUploadRequest
 
-- (void)resume{
-    if (self.uploadTask) {
-        if (self.uploadTask.state == NSURLSessionTaskStateRunning) {
-            return;
-        } else{
-            [self.uploadTask resume];
-        }
-    }
-}
-
-- (void)suspend{
-    if (self.uploadTask) {
-        if (self.uploadTask.state == NSURLSessionTaskStateSuspended) {
-            return;
-        } else{
-            [self.uploadTask suspend];
-        }
-    }
-}
-
-- (void)cancel{
-    if (self.uploadTask) {
-        if (self.uploadTask.state == NSURLSessionTaskStateCanceling) {
-            return;
-        } else{
-            [self.uploadTask cancel];
-        }
-    }
-}
 @end

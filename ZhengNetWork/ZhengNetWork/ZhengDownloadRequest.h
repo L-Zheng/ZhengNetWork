@@ -6,23 +6,11 @@
 //  Copyright © 2016年 李保征. All rights reserved.
 //
 
-#import "ZhengBaseRequest.h"
-#import "AFNetworking.h"
+#import "ZhengBaseProcessRequest.h"
 
-@interface ZhengDownloadRequest : ZhengBaseRequest
+@interface ZhengDownloadRequest : ZhengBaseProcessRequest
 
+/** 下载目录 */
 @property (nonatomic, nonnull, strong) NSURL *targetDirectoryURL;
-
-#pragma mark - 请求管理者
-
-@property (nullable, strong) AFURLSessionManager *sessionManager;
-
-@property (nullable, strong) NSURLSessionDownloadTask *downloadTask;
-
-- (void)resume;
-
-- (void)suspend;
-
-- (void)cancel;
 
 @end
