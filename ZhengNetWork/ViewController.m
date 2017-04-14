@@ -28,8 +28,6 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-//    [self test];
-    
 //        [self requestJsonDicDataNoCache];
     //    [self requestListPageDataNoCache];
     
@@ -50,7 +48,7 @@
     zhengRequest.urlStr = @"https://itunes.apple.com/lookup";
 //    zhengRequest.urlStr = @"itunes.apple.com/lookup";
     zhengRequest.parameters = @{@"id":@"444934666"};
-    zhengRequest.cacheMethod = CacheMethod_Coding;
+    zhengRequest.cacheMethod = CacheMethod_NoCache;
     
     [ZhengNetWork sendRequest:zhengRequest success:^(id responseObject ,NSMutableArray *modelArray) {
         NSLog(@"%@",responseObject);

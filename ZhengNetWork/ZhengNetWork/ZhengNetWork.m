@@ -33,12 +33,16 @@
 //    manager.securityPolicy.allowInvalidCertificates = YES;
     zhengRequest.sessionManager = manager;
     
+    manager.requestSerializer = manager.requestSerializer ? manager.requestSerializer : [AFJSONRequestSerializer serializer];
     //设置请求头
+//    @{@"Content-Type":@"application/json"}
     NSDictionary *header = zhengRequest.header;
     if (header) {
         NSArray *keysArray = header.allKeys;
         for (NSString *key in keysArray) {
-            [manager.requestSerializer setValue:header[key] forHTTPHeaderField:key];
+            if ([header[key] isKindOfClass:[NSString class]]) {
+                [manager.requestSerializer setValue:header[key] forHTTPHeaderField:key];
+            }
         }
     }
     
@@ -47,6 +51,8 @@
     manager.requestSerializer.timeoutInterval = zhengRequest.timeOut.doubleValue;
 //    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     
+    
+    manager.responseSerializer = manager.responseSerializer ? manager.responseSerializer : [AFJSONResponseSerializer serializer];
     //设置ContentType
 //    self.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", nil];
     manager.responseSerializer.acceptableContentTypes = [[manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"] setByAddingObject:@"text/plain"];
